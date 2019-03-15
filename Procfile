@@ -1,0 +1,1 @@
+web: gunicorn ftpmedia_app.app:app

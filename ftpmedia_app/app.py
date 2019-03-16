@@ -19,7 +19,6 @@ app = Flask(__name__)
 #################################################
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://ysodzkuphrfgoj:84ff3e242c8003e2b705786424d7281e85ba2a9496e9065bb9c12021cc982e75@ec2-50-19-109-120.compute-1.amazonaws.com:5432/d6ml7dnjt0ajnc"
-
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model

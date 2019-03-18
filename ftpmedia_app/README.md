@@ -1,7 +1,7 @@
 # Project_3
 Presenting a web portfolio of work with detailed graphical illustrations documenting the breadth and scope of my work history over time
 
-## Project: Web Based Portfolio
+## Web Based Portfolio
 ## Objective:
 • to develop an online project-based portfolio of work presented through dynamic
 visualizations generated from a complex database and archive

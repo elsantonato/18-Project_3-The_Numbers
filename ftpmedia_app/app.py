@@ -27,7 +27,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-myTable = Base.classes.ftp_table
+#myTable = Base.classes.ftp_table
 
 
 @app.route("/")
@@ -46,10 +46,11 @@ def mydata():
     ### CHANGW THIS ##### stmt = db.session.query(myTable).statement
 
     ## CONVERTS THE OUTPUT OF THE QUERY INTO A PANDAS DATAFRAME
-    df = pd.read_sql_query(stmt, db.session.bind)
+    df = pd.read_sql_query("select * from ftp_table", db.session.bind)
 
-    # Return JSON VERSION OF THE OUTPUT FROM THE DATAFRAME IN THE /MYDATA ROUTE
-    return jsonify(df)
+    # CONVERT TO DICTIONARY AND JSONIFY
+    #  Return JSON VERSION OF THE OUTPUT FROM THE DATAFRAME IN THE /MYDATA ROUTE
+    return jsonify(df.to_dict(orient="records"))
 
 if __name__ == "__main__":
     app.run()

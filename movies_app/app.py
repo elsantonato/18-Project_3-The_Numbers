@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://ysodzkuphrfgoj:84ff3e242c8003e2b705786424d7281e85ba2a9496e9065bb9c12021cc982e75@ec2-50-19-109-120.compute-1.amazonaws.com:5432/d6ml7dnjt0ajnc"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/db.sqlite"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -36,8 +36,8 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/mydata")
-def mydata():
+@app.route("/numbers_data")
+def numbers_data():
     """Return a list of sample names."""
 
     # Use Pandas to perform the sql query
@@ -46,7 +46,7 @@ def mydata():
     ### CHANGW THIS ##### stmt = db.session.query(myTable).statement
 
     ## CONVERTS THE OUTPUT OF THE QUERY INTO A PANDAS DATAFRAME
-    df = pd.read_sql_query("select * from ftp_table", db.session.bind)
+    df = pd.read_sql_query("select * from numbers_table", db.session.bind)
 
     # CONVERT TO DICTIONARY AND JSONIFY
     #  Return JSON VERSION OF THE OUTPUT FROM THE DATAFRAME IN THE /MYDATA ROUTE

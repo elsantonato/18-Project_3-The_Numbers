@@ -1,1 +1,1 @@
-web: gunicorn ftpmedia_app.app:app
+web: gunicorn numbers_app.app:app

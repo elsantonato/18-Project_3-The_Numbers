@@ -11,6 +11,8 @@ from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
+from sqlalchemy.ext.automap import automap_base
+
 app = Flask(__name__)
 
 
@@ -18,7 +20,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/db.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://ysodzkuphrfgoj:84ff3e242c8003e2b705786424d7281e85ba2a9496e9065bb9c12021cc982e75@ec2-50-19-109-120.compute-1.amazonaws.com:5432/d6ml7dnjt0ajnc"
 db = SQLAlchemy(app)
 
 # reflect an existing database into a new model
@@ -27,7 +29,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-#myTable = Base.classes.ftp_table
+#myTable = Base.classes.numbers_table
 
 
 @app.route("/")
@@ -49,7 +51,7 @@ def numbers_data():
     df = pd.read_sql_query("select * from numbers_table", db.session.bind)
 
     # CONVERT TO DICTIONARY AND JSONIFY
-    #  Return JSON VERSION OF THE OUTPUT FROM THE DATAFRAME IN THE /MYDATA ROUTE
+    #  Return JSON VERSION OF THE OUTPUT FROM THE DATAFRAME IN THE "/numbers_data" ROUTE
     return jsonify(df.to_dict(orient="records"))
 
 if __name__ == "__main__":

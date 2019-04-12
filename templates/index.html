@@ -15,9 +15,17 @@
 
 <h1>The Numbers Data</h1>
 
+<h3>Project Summary</h3>
+
 <p>This project works with the ETL data from Project 2, wherein multiple sources of online movie ratings and box office revenue by film and distributor are compared. The dataframe is loaded into a Flask app, an HTML and CSS front end is built, and the analytic reports are visualized with Javascript and plotly.js. The app is then deployed to the web via Heroku for portfolio presentation.</p>
 
+<p>A preliminary question that formed the basis for this research was: What are the top grossing films for our week of study? This research was originally conducted during the week of January 4th, 2019. The first stage of development was to scrape data from 'the-numbers.com' website to establish the Top 100 grossing movies for the week. The data was then transformed using pandas to clean it so that it could be analyzed. Some preliminary analyses were perfomed in python to develop a visual representation using matplotlib. The cleaned dataset was then loaded into sqlalchemy and then collected into a heroku database. The new table was then queried and added to a python app via flask. From there a javascript file was created to plot the results using plotly, and an html file was established to present the results. The final app was then deployed to heroku for live server presentation.</p>
+
+<p>Afer the dataset was cleaned, a new dataframe was established to isolate the Movie, Distributor, and Total Gross Revenue columns for the week. The Total Gross was then counted and summed according to the 'groupby' Distributor function. The results were combined into a single dataset via pandas merge. The results were then plotted to represent the Percentage of Total Gross Revenue by Distributor for the week of January 4th, 2019.</p>
+
 <div id="myDiv">
+
+<p>With the majority share of box office revenue going to 20th Century Fox, our next step was to identify the top grossing films released by this distributor. We determined that the top grossing films for the week of January 4th, 2019 were as follows: "Bohemian Rhapsody", "Widows", "Once Upon a Deadpool", "The Hate U Give". This data was illustrated in plotly for a visual representation here.</p>
 
 <div id="bar">
 
